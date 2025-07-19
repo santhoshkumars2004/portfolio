@@ -1,15 +1,13 @@
 import React from 'react';
-// import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'; // Reverted imports
 
-const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-gray-400 py-6 sm:py-8 dark:bg-black dark:text-gray-300">
-      <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm space-y-2 sm:space-y-0">
-        <p className="text-center sm:text-left">© 2025 PORTFOLIO. ALL RIGHTS RESERVED.</p>
-        <p className="text-center sm:text-right">DESIGNED BY SANTHOSH KUMAR</p>
-      </div>
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer className="w-full py-6 bg-white/70 dark:bg-black/70 glass-card shadow-lg flex items-center justify-center relative z-50" style={{ WebkitBackdropFilter: 'blur(12px)', backdropFilter: 'blur(12px)' }}>
+    <span className="animated-gradient-text font-bold text-lg tracking-wide drop-shadow-lg">
+      © {new Date().getFullYear()} Santhosh Kumar S. All Rights Reserved.
+    </span>
+    {/* Floating effect */}
+    <span className="absolute left-1/2 -translate-x-1/2 bottom-2 w-3 h-3 bg-blue-400/30 rounded-full blur-md animate-float" />
+  </footer>
+);
 
 export default Footer; 

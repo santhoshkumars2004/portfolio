@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import routing components
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'; // Import routing components
+import AnimatedBackground from './components/AnimatedBackground';
 // import Sidebar from './components/Sidebar'; // Removed
 import Navbar from './components/Navbar'; // Added
 import Hero from './components/Hero';
@@ -15,6 +16,8 @@ import Education from './components/Education'; // Added Education component imp
 import Experience from './components/Experience'; // Added Experience component import
 import ProjectDetail from './pages/ProjectDetail'; // Import ProjectDetail component
 import CertificateDetail from './pages/CertificateDetail';
+import CustomCursor from './components/CustomCursor';
+import { AnimatePresence, motion } from 'framer-motion';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,44 +59,65 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Page transition variants
+  const pageVariants = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+    exit: { opacity: 0, y: -40, transition: { duration: 0.5, ease: 'easeIn' } },
+  };
+
+  // Get location for AnimatePresence
+  const location = window.location;
+
   return (
     <Router> {/* Wrap the application with Router */}
       <div className={`min-h-screen bg-white text-gray-800 ${isDarkMode ? 'dark:bg-black dark:text-white' : ''}`}> {/* Apply dark mode styles */}
+        <AnimatedBackground />
+        <CustomCursor />
         <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} /> {/* Pass dark mode state and toggle function to Navbar */}
 
         {/* Added pt-16 to main content wrapper to account for fixed header height */}
         <div className="pt-16"> 
-          {/* Main Content */}
-          <Routes> {/* Define routes */}
-            <Route path="/" element={ 
-              <main>
-                <Hero />
-                <div id="about"> {/* About section comes first */}
-                  <About />
-                </div>
-                <Education /> {/* Education comes after About */}
-                <div id="projects"> {/* Projects comes after Education */}
-                  <Projects />
-                </div>
-                <Stats /> {/* Stats section comes after About */}
-                <Experience /> {/* Added Experience component after Stats */}
-                <div id="skills"> {/* Reordered: Skills comes after Projects */}
-                  <Skills />
-                </div>
-                <div id="services"> {/* Added id for navigation */}
-                  <Services /> {/* Added Services component */}
-                </div>
-                <LetsTalk /> {/* Added LetsTalk component */}
-                <div id="contact">
-                  <Contact />
-                </div>
-              </main>
-            } />
-            <Route path="/projects/:projectId" element={<ProjectDetail />} /> {/* Project detail page route */}
-            <Route path="/certificate/:id" element={<CertificateDetail />} />
-          </Routes>
-          {/* Footer outside Routes so it appears on all pages */}
-          <Footer /> {/* Replaced existing footer with Footer component */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname}
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={ 
+                  <main>
+                    <Hero />
+                    <div id="about"> {/* About section comes first */}
+                      <About />
+                    </div>
+                    <Education /> {/* Education comes after About */}
+                    <div id="projects"> {/* Projects comes after Education */}
+                      <Projects />
+                    </div>
+                    <Stats /> {/* Stats section comes after About */}
+                    <Experience /> {/* Added Experience component after Stats */}
+                    <div id="skills"> {/* Reordered: Skills comes after Projects */}
+                      <Skills />
+                    </div>
+                    <div id="services"> {/* Added id for navigation */}
+                      <Services /> {/* Added Services component */}
+                    </div>
+                    <LetsTalk /> {/* Added LetsTalk component */}
+                    <div id="contact">
+                      <Contact />
+                    </div>
+                  </main>
+                } />
+                <Route path="/projects/:projectId" element={<ProjectDetail />} /> {/* Project detail page route */}
+                <Route path="/certificate/:id" element={<CertificateDetail />} />
+              </Routes>
+              {/* Footer outside Routes so it appears on all pages */}
+              <Footer /> {/* Replaced existing footer with Footer component */}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </Router>
