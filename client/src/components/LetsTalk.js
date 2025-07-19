@@ -111,17 +111,41 @@ const LetsTalk = () => {
         className="absolute bottom-20 left-20 w-3 h-3 bg-white/20 rounded-full hidden lg:block"
       />
 
+      {/* Scattered Smaller Links (Absolute Positioning) */}
+      {/* Hidden on smaller screens to prevent overlap */}
+      <div className="absolute inset-0 pointer-events-none hidden lg:block">
+        {scatteredLinks.map((link, index) => (
+          <motion.a
+            key={index}
+            href="#" // Replace with actual links
+            variants={linkVariants}
+            initial="hidden"
+            animate={isVisible ? "visible" : "hidden"}
+            whileHover={{ 
+              scale: 1.2,
+              color: "#ffffff",
+              transition: { duration: 0.2 }
+            }}
+            className="absolute text-gray-400 hover:text-white transition-colors text-sm font-semibold pointer-events-auto uppercase"
+            style={{ top: link.top, left: link.left, right: link.right, bottom: link.bottom }}
+          >
+            {link.name}
+          </motion.a>
+        ))}
+      </div>
+
+      {/* Main Content Container */}
       <motion.div
         ref={ref}
         variants={containerVariants}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
-        className="relative z-10"
+        className="relative z-10 flex flex-col items-center justify-center w-full h-full"
       >
         {/* Large "LET'S TALK" text with gradient */}
         <motion.h2 
           variants={titleVariants}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl font-bold text-center tracking-tight leading-none mb-4 sm:mb-6 md:mb-8 lg:mb-12 xl:mb-16 px-4"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl font-bold text-center tracking-tight leading-none mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-4"
           style={{ background: 'linear-gradient(to right, white 50%, gray 50%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
           whileHover={{ 
             scale: 1.05,
@@ -131,63 +155,40 @@ const LetsTalk = () => {
           LET'S TALK
         </motion.h2>
 
-        {/* Scattered Smaller Links (Absolute Positioning) */}
-        {/* Hidden on smaller screens to prevent overlap */}
-        <div className="absolute inset-0 pointer-events-none hidden lg:block">
-          {scatteredLinks.map((link, index) => (
-            <motion.a
-              key={index}
-              href="#" // Replace with actual links
-              variants={linkVariants}
-              whileHover={{ 
-                scale: 1.2,
-                color: "#ffffff",
-                transition: { duration: 0.2 }
-              }}
-              className="absolute text-gray-400 hover:text-white transition-colors text-sm font-semibold pointer-events-auto uppercase"
-              style={{ top: link.top, left: link.left, right: link.right, bottom: link.bottom }}
-            >
-              {link.name}
-            </motion.a>
-          ))}
-        </div>
-
-        {/* Prominent Buttons at the bottom */}
+        {/* Buttons Container */}
         <motion.div 
           variants={buttonVariants}
-          className="absolute bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-10 left-0 w-full z-20"
+          className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 px-4"
         >
-           <div className="container mx-auto px-4 flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
-              {/* Only LinkedIn and Contact Me buttons at the bottom */}
-              <motion.a 
-                href="#" 
-                whileHover={{ 
-                  scale: 1.1,
-                  y: -3,
-                  backgroundColor: "#ffffff",
-                  color: "#1f2937",
-                  transition: { duration: 0.2 }
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="px-3 sm:px-4 md:px-6 py-2 rounded-full border border-white text-white font-semibold transition-all duration-300 text-xs sm:text-sm uppercase cursor-pointer"
-              >
-                LINKEDIN
-              </motion.a>
-              <motion.a 
-                href="#contact" 
-                whileHover={{ 
-                  scale: 1.1,
-                  y: -3,
-                  backgroundColor: "#ffffff",
-                  color: "#1f2937",
-                  transition: { duration: 0.2 }
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="px-3 sm:px-4 md:px-6 py-2 rounded-full border border-white text-white font-semibold transition-all duration-300 text-xs sm:text-sm uppercase cursor-pointer"
-              >
-                CONTACT ME
-              </motion.a>
-           </div>
+          {/* LinkedIn and Contact Me buttons */}
+          <motion.a 
+            href="#" 
+            whileHover={{ 
+              scale: 1.1,
+              y: -3,
+              backgroundColor: "#ffffff",
+              color: "#1f2937",
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full border border-white text-white font-semibold transition-all duration-300 text-sm sm:text-base uppercase cursor-pointer hover:shadow-lg"
+          >
+            LINKEDIN
+          </motion.a>
+          <motion.a 
+            href="#contact" 
+            whileHover={{ 
+              scale: 1.1,
+              y: -3,
+              backgroundColor: "#ffffff",
+              color: "#1f2937",
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full border border-white text-white font-semibold transition-all duration-300 text-sm sm:text-base uppercase cursor-pointer hover:shadow-lg"
+          >
+            CONTACT ME
+          </motion.a>
         </motion.div>
       </motion.div>
     </section>
