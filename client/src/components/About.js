@@ -3,14 +3,14 @@ import { FaArrowDown, FaArrowRight } from 'react-icons/fa';
 
 const About = () => {
   return (
-    <section id="about" className="py-8 sm:py-12 md:py-16 lg:py-20 text-gray-800 relative overflow-hidden dark:text-white">
+    <section id="about" className="py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 text-gray-800 relative overflow-hidden dark:text-white">
       <div className="container mx-auto px-4 flex items-center justify-center">
 
         {/* Content area with heading and quote */}
         <div className="flex flex-col items-center justify-center max-w-4xl mx-auto text-center"> 
 
           {/* About heading - visible on all devices */}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 md:mb-8 dark:text-white">ABOUT</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-6 lg:mb-8 dark:text-white">ABOUT</h2>
           
           {/* Quote */}
           <div className="max-w-2xl">
