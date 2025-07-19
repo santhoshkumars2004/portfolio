@@ -19,16 +19,16 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-100 text-gray-800 dark:bg-black dark:text-white"> {/* Section container with padding, background, and text colors, including dark mode */}
-      <div className="container mx-auto px-4 text-center"> {/* Container for content, centered text */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 dark:text-white">Experience</h2> {/* Section title, bold, with margin bottom, dark mode text color */}
+    <section id="experience" className="py-8 sm:py-12 md:py-16 lg:py-20 text-gray-800 dark:text-white">
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 md:mb-12 dark:text-white">Experience</h2>
 
-        <div className="space-y-12"> {/* Space between experience entries */}
+        <div className="space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-12 max-w-4xl mx-auto">
           {experiences.map((experience, index) => (
-            <div key={index} className="text-left bg-white p-6 rounded-lg shadow-md border border-gray-200 dark:bg-black dark:border-gray-800"> {/* Card-like container for each experience, text aligned left, padding, rounded corners, shadow, border, dark mode styles */}
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">{experience.title}</h3> {/* Job title, bold, dark mode text color */}
-              <p className="text-lg text-gray-700 dark:text-gray-300">{experience.company} | {experience.years}</p> {/* Company and years, dark mode text color */}
-              <p className="mt-4 text-gray-600 dark:text-gray-400">{experience.description}</p> {/* Description, margin top, dark mode text color */}
+            <div key={index} className="text-left bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-md border border-gray-200/50 dark:bg-black dark:border-gray-800">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2">{experience.title}</h3>
+              <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 mb-2 sm:mb-3">{experience.company} | {experience.years}</p>
+              <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{experience.description}</p>
             </div>
           ))}
         </div>

@@ -34,50 +34,61 @@ const Projects = () => {
       subtitle: "AI POWERED CHAT",
       category: "website",
       description: "An AI-powered chat application that uses natural language processing to provide intelligent responses.",
-      image: "/project3.jpg",
+      image: "/images/project3.jpg",
       technologies: ["Python", "TensorFlow", "React", "WebSocket"],
       github: "https://github.com/username/ai-chat",
       live: "https://ai-chat-demo.com"
     },
-    {
-      id: 'new-project-1',
-      title: "[New Project Title 1]",
-      subtitle: "[New Project Subtitle 1]",
-      category: "[Category]",
-      description: "[Brief description of the project.]",
-      image: "[Placeholder Image URL 1]",
-      technologies: [],
-      github: "[GitHub Link 1]",
-      live: "[Live Demo Link 1]"
-    },
-  
   ];
 
-  return (
-    <section id="projects" className="py-20 bg-white text-gray-800 dark:bg-black dark:text-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 dark:text-white">FEATURED PROJECT</h2>
+  // Calculate optimal grid columns based on number of projects
+  const getGridCols = () => {
+    const count = projects.length;
+    if (count === 1) return "grid-cols-1";
+    if (count === 2) return "grid-cols-1 sm:grid-cols-2";
+    if (count === 3) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+    if (count === 4) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4";
+    if (count === 5) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5";
+    if (count === 6) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6";
+    // For more than 6 projects, use a standard responsive grid
+    return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5";
+  };
 
-        <div className="flex overflow-x-auto space-x-8 pb-4">
+  // Calculate max width based on number of projects
+  const getMaxWidth = () => {
+    const count = projects.length;
+    if (count === 1) return "max-w-md";
+    if (count === 2) return "max-w-4xl";
+    if (count === 3) return "max-w-6xl";
+    if (count === 4) return "max-w-7xl";
+    return "max-w-7xl";
+  };
+
+  return (
+    <section id="projects" className="py-8 sm:py-12 md:py-16 lg:py-20 text-gray-800 dark:text-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 dark:text-white">FEATURED PROJECT</h2>
+
+        <div className={`grid ${getGridCols()} gap-3 sm:gap-4 md:gap-6 lg:gap-8 ${getMaxWidth()} mx-auto justify-items-center`}>
           {projects.map((project, index) => (
             <div
               key={index}
-              className="flex-none w-64 md:w-80 rounded-lg overflow-hidden border border-gray-300 dark:border-gray-800 dark:bg-black"
+              className="bg-white/80 backdrop-blur-sm dark:bg-black rounded-lg overflow-hidden border border-gray-300/50 dark:border-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm"
             >
-              <div className="relative h-80 w-full">
+              <div className="relative h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 w-full">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover grayscale"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
                 />
-                <Link to={`/projects/${project.id}`} className="absolute bottom-4 right-4 bg-white border border-gray-300 w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600">
-                  <FaArrowRight className="text-lg text-gray-800 dark:text-white" />
+                <Link to={`/projects/${project.id}`} className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 md:bottom-4 md:right-4 bg-white border border-gray-300 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600">
+                  <FaArrowRight className="text-xs sm:text-sm md:text-lg text-gray-800 dark:text-white" />
                 </Link>
               </div>
               
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-900 mb-1 dark:text-white">{project.title}</h3>
-                <p className="text-gray-600 text-xs tracking-widest dark:text-gray-300">{project.subtitle}</p>
+              <div className="p-3 sm:p-4 text-center">
+                <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-1 dark:text-white line-clamp-2">{project.title}</h3>
+                <p className="text-gray-600 text-xs sm:text-sm tracking-widest dark:text-gray-300">{project.subtitle}</p>
               </div>
             </div>
           ))}

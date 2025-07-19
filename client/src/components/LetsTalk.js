@@ -11,17 +11,16 @@ const LetsTalk = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative py-12 sm:py-16 md:py-20 bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Large "LET'S TALK" text with gradient */}
-      {/* Using inline style for gradient as complex text gradients might not be fully supported by utility classes */}
-      <h2 className="text-6xl md:text-8xl font-bold text-center tracking-tight leading-none mb-16"
+      <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-center tracking-tight leading-none mb-8 sm:mb-12 md:mb-16 px-4"
           style={{ background: 'linear-gradient(to right, white 50%, gray 50%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
         LET'S TALK
       </h2>
 
       {/* Scattered Smaller Links (Absolute Positioning) */}
       {/* Hidden on smaller screens to prevent overlap */}
-      <div className="absolute inset-0 pointer-events-none hidden md:block">
+      <div className="absolute inset-0 pointer-events-none hidden lg:block">
         {scatteredLinks.map((link, index) => (
           <a
             key={index}
@@ -35,11 +34,11 @@ const LetsTalk = () => {
       </div>
 
       {/* Prominent Buttons at the bottom */}
-      <div className="absolute bottom-10 left-0 w-full z-20">
-         <div className="container mx-auto px-4 flex flex-wrap justify-center gap-4">
+      <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-0 w-full z-20">
+         <div className="container mx-auto px-4 flex flex-wrap justify-center gap-3 sm:gap-4">
             {/* Only LinkedIn and Contact Me buttons at the bottom */}
-            <a href="#" className="px-6 py-2 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-gray-900 transition-colors text-sm uppercase">LINKEDIN</a>
-            <a href="#contact" className="px-6 py-2 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-gray-900 transition-colors text-sm uppercase">CONTACT ME</a>
+            <a href="#" className="px-4 sm:px-6 py-2 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-gray-900 transition-colors text-xs sm:text-sm uppercase">LINKEDIN</a>
+            <a href="#contact" className="px-4 sm:px-6 py-2 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-gray-900 transition-colors text-xs sm:text-sm uppercase">CONTACT ME</a>
          </div>
       </div>
     </section>

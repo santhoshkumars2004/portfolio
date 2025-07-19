@@ -30,7 +30,7 @@ const certificates = [
     id: 'aws',
     title: 'AWS Cloud Practitioner',
     subtitle: 'Issued by AWS',
-    image: '/images/certificate5.jpg',
+    image: '/images/amazon.jpg',
   },
   {
     id: 'design',
@@ -45,16 +45,16 @@ const CertificateDetail = () => {
   const cert = certificates.find(c => c.id === id);
 
   if (!cert) {
-    return <div className="min-h-screen flex items-center justify-center text-2xl">Certificate not found.</div>;
+    return <div className="min-h-screen flex items-center justify-center text-2xl text-gray-800 dark:text-white">Certificate not found.</div>;
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-100 dark:from-gray-900 dark:via-black dark:to-gray-900 py-20 px-4">
-      <div className="bg-white dark:bg-black rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-800 p-8 flex flex-col items-center max-w-xl w-full">
+    <div className="min-h-screen flex flex-col items-center justify-center py-20 px-4">
+      <div className="bg-white/80 backdrop-blur-sm dark:bg-black rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-800 p-8 flex flex-col items-center max-w-xl w-full">
         <img src={cert.image} alt={cert.title} className="w-full h-[500px] object-contain rounded-2xl mb-8 border-b border-gray-100 dark:border-gray-700" />
-        <h1 className="text-3xl font-bold mb-2 text-center dark:text-white">{cert.title}</h1>
+        <h1 className="text-3xl font-bold mb-2 text-center text-gray-900 dark:text-white">{cert.title}</h1>
         <h2 className="text-lg text-gray-500 dark:text-gray-400 mb-6 text-center">{cert.subtitle}</h2>
-        <Link to="/" className="mt-4 px-6 py-2 bg-secondary text-white rounded-full font-semibold hover:bg-secondary/80 transition-colors shadow-lg">Back to Home</Link>
+        <Link to="/" className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg">Back to Home</Link>
       </div>
     </div>
   );

@@ -28,8 +28,8 @@ const ProjectDetail = () => {
       subtitle: "AI Management System",
       category: "Website",
       description: "A collaborative task management application with real-time updates, team features, and progress tracking. [More detailed description here]",
-      image: "/project2.jpg",
-      technologies: ["Html","Css","Django Machine Learning(LLM & NLP)" ,"Power Bi"],
+      image: "/images/project2.jpg",
+      technologies: ["Html","Css","Django Machine Learning(LLM & NLP)" ,"Python","Javascript","SQL"],
       github: "https://github.com/username/task-manager",
       live: "",
       // Add more details specific to this project
@@ -42,7 +42,7 @@ const ProjectDetail = () => {
       subtitle: "AI POWERED CHAT",
       category: "website",
       description: "Sustainable waste management and recycling solution",
-      image: "/project3.jpg",
+      image: "/images/project3.jpg",
       technologies: ["Html", "Css", "JavaScript", "Django", "Arduino and IOT"],
       github: "https://github.com/santhoshkumars2004/carbon-green", // Updated GitHub link
       youtube: "https://youtu.be/O_0DCLTIUJw?si=CxptlaQlg6h7xxvL", // Added YouTube link
@@ -59,7 +59,7 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 dark:bg-black dark:text-white py-20 pt-32"> {/* Adjusted padding-top to account for fixed Navbar */}
+    <div className="min-h-screen text-gray-800 dark:text-white py-20 pt-32"> {/* Adjusted padding-top to account for fixed Navbar */}
       <div className="container mx-auto px-4">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 dark:text-white">{project.title}</h1>
         <p className="text-xl text-gray-600 text-center mb-4 dark:text-gray-300">{project.subtitle}</p>
@@ -89,7 +89,7 @@ const ProjectDetail = () => {
             <h3 className="text-2xl font-semibold mb-4 dark:text-white">Technologies</h3>
             <div className="flex flex-wrap gap-2 mb-6">
               {project.technologies.map((tech, index) => (
-                <span key={index} className="px-3 py-1 bg-gray-200 rounded-full text-sm font-semibold text-gray-700 dark:bg-black dark:text-gray-200">
+                <span key={index} className="px-3 py-1 bg-white/80 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-700 dark:bg-black dark:text-gray-200 border border-gray-200/50 dark:border-gray-800">
                   {tech}
                 </span>
               ))}
@@ -112,7 +112,7 @@ const ProjectDetail = () => {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700"
+                  className="px-6 py-2 bg-white/80 text-gray-800 border border-gray-300/50 rounded-lg hover:bg-white transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700"
                 >
                   Live Demo
                 </a>
