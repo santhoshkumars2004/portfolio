@@ -40,7 +40,6 @@ const Skills = () => {
         { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" /> },
         { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
         { name: "React.js", icon: <FaReact className="text-blue-400" /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
         { name: "Bootstrap", icon: <SiBootstrap className="text-purple-500" /> }
       ]
     },
@@ -50,26 +49,21 @@ const Skills = () => {
         { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
         { name: "Express.js", icon: <SiExpress className="text-gray-600 dark:text-gray-300" /> },
         { name: "Python", icon: <FaPython className="text-blue-600" /> },
-        { name: "Java", icon: <FaJava className="text-red-500" /> },
-        { name: "PHP", icon: <FaPhp className="text-purple-600" /> }
+        { name: "Java", icon: <FaJava className="text-red-500" /> }
       ]
     },
     {
       category: "Database",
       skills: [
-        { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
         { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
-        { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-700" /> },
-        { name: "SQLite", icon: <FaDatabase className="text-gray-600 dark:text-gray-300" /> }
+        { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-700" /> }
       ]
     },
     {
       category: "Tools & Others",
       skills: [
         { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
-        { name: "Docker", icon: <FaDocker className="text-blue-500" /> },
-        { name: "AWS", icon: <FaAws className="text-yellow-500" /> },
-        { name: "REST API", icon: <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center text-white text-xs font-bold">API</div> }
+        { name: "AWS", icon: <FaAws className="text-yellow-500" /> }
       ]
     }
   ];
