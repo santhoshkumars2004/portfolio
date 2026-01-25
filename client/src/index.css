@@ -659,4 +659,187 @@ html {
   50% {
     box-shadow: 0 0 10px #60a5fa, 0 0 20px #60a5fa, 0 0 30px #60a5fa;
   }
+}
+
+/* ========================================
+   CINEMATIC EFFECTS
+   ======================================== */
+
+/* Film Grain Overlay */
+.film-grain::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Vignette Effect */
+.vignette::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Cinematic Text Reveal */
+@keyframes cinematic-reveal {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+.cinematic-reveal {
+  animation: cinematic-reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Letter by Letter Animation */
+@keyframes letter-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-90deg);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+.letter-animate {
+  display: inline-block;
+  animation: letter-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Epic Glow Pulse */
+@keyframes epic-glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(59, 130, 246, 0.8),
+      0 0 20px rgba(59, 130, 246, 0.6),
+      0 0 30px rgba(139, 92, 246, 0.4),
+      0 0 40px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 20px rgba(59, 130, 246, 1),
+      0 0 40px rgba(59, 130, 246, 0.8),
+      0 0 60px rgba(139, 92, 246, 0.6),
+      0 0 80px rgba(139, 92, 246, 0.4);
+  }
+}
+
+.epic-glow {
+  animation: epic-glow 3s ease-in-out infinite;
+}
+
+/* Cinematic Zoom In */
+@keyframes zoom-in-cinematic {
+  0% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.zoom-in-cinematic {
+  animation: zoom-in-cinematic 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fade Through Black */
+@keyframes fade-through-black {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Progress Bar Glow */
+@keyframes progress-glow {
+  0% {
+    box-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6;
+  }
+  100% {
+    box-shadow: 0 0 20px #3b82f6, 0 0 40px #8b5cf6, 0 0 60px #8b5cf6;
+  }
+}
+
+/* Floating Stars */
+@keyframes star-float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: star-float linear infinite;
+}
+
+/* Scanline Effect */
+.scanlines::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9996;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03),
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+/* Cinematic Section Divider */
+.cinematic-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), rgba(139, 92, 246, 0.5), transparent);
+  margin: 4rem 0;
+}
+
+/* Hero Backdrop */
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
 } 

@@ -84,7 +84,7 @@ const Certificates = () => {
   const numDots = Math.ceil(total / CARDS_PER_VIEW);
 
   return (
-    <section id="certificates" className="py-8 sm:py-12 md:py-16 min-h-[80vh] sm:min-h-screen text-gray-800 dark:text-white flex flex-col justify-center">
+    <section id="certificates" className="py-8 sm:py-12 md:py-16 min-h-[80vh] sm:min-h-screen bg-black text-white flex flex-col justify-center">
       <div className="container mx-auto px-2 sm:px-4 flex flex-col items-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-2 dark:text-white tracking-tight">CERTIFICATES</h2>
         <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-4 sm:mb-6 dark:text-white tracking-tight">SHOWCASE</h2>

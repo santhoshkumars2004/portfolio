@@ -1,78 +1,106 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-const AnimatedBackground = () => {
-  // Generate random positions for SVG blobs
-  const blobs = [
-    { cx: '20%', cy: '30%', r: 180, color: 'rgba(59,130,246,0.18)' },
-    { cx: '80%', cy: '60%', r: 140, color: 'rgba(168,85,247,0.15)' },
-    { cx: '50%', cy: '80%', r: 120, color: 'rgba(236,72,153,0.13)' },
-  ];
+const ScrollParticles = () => {
+  const [particles, setParticles] = useState([]);
 
-  // Floating particles
-  const canvasRef = useRef(null);
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    let particles = Array.from({ length: 30 }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      r: 2 + Math.random() * 3,
-      dx: (Math.random() - 0.5) * 0.5,
-      dy: (Math.random() - 0.5) * 0.5,
-      color: `rgba(59,130,246,${0.1 + Math.random() * 0.2})`
+    // Generate random particles
+    const newParticles = Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 2,
+      duration: Math.random() * 10 + 10,
+      delay: Math.random() * 5,
     }));
-    let animationId;
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let p of particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 8;
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-        if (p.x < 0 || p.x > window.innerWidth) p.dx *= -1;
-        if (p.y < 0 || p.y > window.innerHeight) p.dy *= -1;
-      }
-      animationId = requestAnimationFrame(animate);
-    }
-    animate();
-    return () => cancelAnimationFrame(animationId);
+    setParticles(newParticles);
   }, []);
 
   return (
+    <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: particle.size,
+            height: particle.size,
+            background: `radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, transparent 70%)`,
+          }}
+          animate={{
+            y: [0, -200, 0],
+            opacity: [0, 0.8, 0],
+            scale: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: particle.duration,
+            delay: particle.delay,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+const FloatingLines = () => {
+  const { scrollYProgress } = useScroll();
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 1]);
+  const rotateReverse = useTransform(scrollYProgress, [0, 1], [0, -180]);
+  const scaleReverse = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 0.9, 1.1]);
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
+      {/* Large rotating ring */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2"
+        style={{ rotate, scale }}
+      >
+        <div className="w-full h-full rounded-full border border-blue-500/10" />
+      </motion.div>
+
+      {/* Second ring */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2"
+        style={{ rotate: rotateReverse, scale: scaleReverse }}
+      >
+        <div className="w-full h-full rounded-full border border-purple-500/10" />
+      </motion.div>
+
+      {/* Static horizontal lines with opacity animation */}
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"
+          style={{ top: `${20 + i * 15}%` }}
+          animate={{
+            x: [i % 2 === 0 ? -50 : 50, i % 2 === 0 ? 50 : -50],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8 + i * 2,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+const AnimatedBackground = () => {
+  return (
     <>
-      {/* SVG Blobs */}
-      <svg className="fixed inset-0 w-full h-full pointer-events-none z-0" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0 }}>
-        {blobs.map((blob, i) => (
-          <circle
-            key={i}
-            cx={blob.cx}
-            cy={blob.cy}
-            r={blob.r}
-            fill={blob.color}
-          >
-            <animate
-              attributeName="r"
-              values={`${blob.r};${blob.r * 1.2};${blob.r}`}
-              dur="12s"
-              repeatCount="indefinite"
-            />
-          </circle>
-        ))}
-      </svg>
-      {/* Canvas Particles */}
-      <canvas
-        ref={canvasRef}
-        width={window.innerWidth}
-        height={window.innerHeight}
-        className="fixed inset-0 w-full h-full pointer-events-none z-0"
-        style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0 }}
-      />
+      <ScrollParticles />
+      <FloatingLines />
     </>
   );
 };
 
-export default AnimatedBackground; 
+export default AnimatedBackground;

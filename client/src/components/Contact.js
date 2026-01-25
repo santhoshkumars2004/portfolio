@@ -38,7 +38,7 @@ const Contact = () => {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-      
+
       // Clear status message after 3 seconds
       setTimeout(() => setSubmitStatus(''), 3000);
     }
@@ -52,10 +52,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-8 sm:py-12 md:py-16 lg:py-20 text-gray-800 dark:text-white">
+    <section id="contact" className="py-8 sm:py-12 md:py-16 lg:py-20 bg-black text-white">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 dark:text-white">Get In Touch</h2>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-4 sm:space-y-6 md:space-y-8 order-2 lg:order-1">
@@ -65,20 +65,20 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2 text-gray-900 dark:text-white">Email</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">santhoshkumar.btech1@gmail.com</p>
+                <a href="mailto:santhoshkumar.btech1@gmail.com" className="text-gray-600 dark:text-gray-300 text-sm sm:text-base hover:text-blue-600 dark:hover:text-blue-400 transition-colors">santhoshkumar.btech1@gmail.com</a>
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3 sm:gap-4">
               <div className="p-2 sm:p-3 rounded-full text-gray-800 border border-gray-300 dark:text-white dark:border-gray-700 flex-shrink-0">
                 <FaPhone className="text-lg sm:text-xl" />
               </div>
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2 text-gray-900 dark:text-white">Phone</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">+91 9344705641</p>
+                <a href="tel:+919344705641" className="text-gray-600 dark:text-gray-300 text-sm sm:text-base hover:text-blue-600 dark:hover:text-blue-400 transition-colors">+91 9344705641</a>
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3 sm:gap-4">
               <div className="p-2 sm:p-3 rounded-full text-gray-800 border border-gray-300 dark:text-white dark:border-gray-700 flex-shrink-0">
                 <FaMapMarkerAlt className="text-lg sm:text-xl" />
@@ -107,7 +107,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-gray-700 font-medium mb-1 sm:mb-2 dark:text-gray-300 text-sm sm:text-base">
                   Email
@@ -122,7 +122,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-gray-700 font-medium mb-1 sm:mb-2 dark:text-gray-300 text-sm sm:text-base">
                   Message
@@ -137,7 +137,7 @@ const Contact = () => {
                   required
                 ></textarea>
               </div>
-              
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -152,7 +152,7 @@ const Contact = () => {
                   Message sent successfully! You'll receive a response soon.
                 </div>
               )}
-              
+
               {submitStatus === 'error' && (
                 <div className="text-red-600 dark:text-red-400 text-sm text-center">
                   Failed to send message. Please try again or contact directly via email.

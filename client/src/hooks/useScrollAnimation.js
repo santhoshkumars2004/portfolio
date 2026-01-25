@@ -41,7 +41,7 @@ export const useParallaxScroll = (speed = 0.5) => {
   useEffect(() => {
     const handleScroll = () => {
       if (elementRef.current) {
-        const rect = elementRef.current.getBoundingClientRect();
+        // const rect = elementRef.current.getBoundingClientRect();
         const scrolled = window.pageYOffset;
         const rate = scrolled * -speed;
         setOffset(rate);
@@ -65,7 +65,7 @@ export const useStaggerAnimation = (items, staggerDelay = 0.1) => {
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
-          
+
           // Stagger the animations
           items.forEach((_, index) => {
             setTimeout(() => {

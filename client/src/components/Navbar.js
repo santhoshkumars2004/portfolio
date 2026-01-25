@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { FaLinkedin, FaWhatsapp, FaBars, FaTimes } from 'react-icons/fa';
+import { FaLinkedin, FaWhatsapp, FaBars, FaTimes, FaYoutube } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -23,8 +23,8 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
@@ -34,12 +34,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   };
 
   const menuVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scale: 0.8,
       y: -20
     },
-    visible: { 
+    visible: {
       opacity: 1,
       scale: 1,
       y: 0,
@@ -66,7 +66,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       variants={navVariants}
       initial="hidden"
       animate="visible"
@@ -75,7 +75,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between relative">
         {/* Enhanced Logo/Branding with Animated Gradient */}
-        <motion.div 
+        <motion.div
           className="font-bold tracking-tight text-gray-900 text-xl dark:text-white animated-gradient-text"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
@@ -113,7 +113,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         <div className="flex items-center space-x-4">
           {/* Enhanced Social Icons */}
           <motion.a
-            href="https://linkedin.com/in/your-profile"
+            href="https://linkedin.com/in/santhosh-kumar-s-67465a239/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 magnetic hover-glow"
@@ -123,7 +123,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             <FaLinkedin className="text-xl" />
           </motion.a>
           <motion.a
-            href="https://wa.me/your-number"
+            href="https://wa.me/919344705641"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 magnetic hover-glow"
@@ -133,12 +133,22 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             <FaWhatsapp className="text-xl" />
           </motion.a>
           <motion.a
-            href="mailto:your-email@gmail.com"
+            href="mailto:santhoshkumar.btech1@gmail.com"
             className="text-gray-600 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-all duration-300 magnetic hover-glow"
             whileHover={{ scale: 1.1, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
           >
             <SiGmail className="text-xl" />
+          </motion.a>
+          <motion.a
+            href="https://www.youtube.com/@errorhumanity"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-red-500 dark:text-gray-300 dark:hover:text-red-500 transition-all duration-300 magnetic hover-glow"
+            whileHover={{ scale: 1.1, rotate: -5 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <FaYoutube className="text-xl" />
           </motion.a>
           {/* Enhanced Dark Mode Toggle */}
           <motion.button
@@ -223,7 +233,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 transition={{ delay: 0.4 }}
               >
                 <motion.a
-                  href="https://linkedin.com/in/your-profile"
+                  href="https://linkedin.com/in/santhosh-kumar-s-67465a239/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 hover-glow"
@@ -233,7 +243,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                   <FaLinkedin className="text-2xl" />
                 </motion.a>
                 <motion.a
-                  href="https://wa.me/your-number"
+                  href="https://wa.me/919344705641"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 hover-glow"
@@ -243,12 +253,22 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                   <FaWhatsapp className="text-2xl" />
                 </motion.a>
                 <motion.a
-                  href="mailto:your-email@gmail.com"
+                  href="mailto:santhoshkumar.btech1@gmail.com"
                   className="text-gray-600 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-all duration-300 hover-glow"
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   <SiGmail className="text-2xl" />
+                </motion.a>
+                <motion.a
+                  href="https://www.youtube.com/@errorhumanity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-red-500 dark:text-gray-300 dark:hover:text-red-500 transition-all duration-300 hover-glow"
+                  whileHover={{ scale: 1.2, rotate: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FaYoutube className="text-2xl" />
                 </motion.a>
               </motion.div>
             </motion.div>

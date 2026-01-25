@@ -26,14 +26,14 @@ const LetsTalk = () => {
   };
 
   const titleVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50,
       scale: 0.8,
       rotateX: -15
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       rotateX: 0,
@@ -59,13 +59,13 @@ const LetsTalk = () => {
   };
 
   const buttonVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 30,
       scale: 0.8
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
@@ -96,17 +96,19 @@ const LetsTalk = () => {
   ];
 
   return (
-    <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-gray-900 text-white min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-black text-white min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Animated SVG Wave at the top */}
       <svg className="absolute top-0 left-0 w-full h-24 z-10" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
         <motion.path
           d="M0,80 Q360,0 720,80 T1440,80 V120 H0 Z"
           fill="url(#letsTalkWave)"
-          animate={{ d: [
-            'M0,80 Q360,0 720,80 T1440,80 V120 H0 Z',
-            'M0,60 Q360,100 720,60 T1440,100 V120 H0 Z',
-            'M0,80 Q360,0 720,80 T1440,80 V120 H0 Z'
-          ] }}
+          animate={{
+            d: [
+              'M0,80 Q360,0 720,80 T1440,80 V120 H0 Z',
+              'M0,60 Q360,100 720,60 T1440,100 V120 H0 Z',
+              'M0,80 Q360,0 720,80 T1440,80 V120 H0 Z'
+            ]
+          }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <defs>
@@ -168,7 +170,7 @@ const LetsTalk = () => {
             variants={linkVariants}
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
-            whileHover={{ 
+            whileHover={{
               scale: 1.2,
               color: "#ffffff",
               transition: { duration: 0.2 }
@@ -189,10 +191,10 @@ const LetsTalk = () => {
         className="relative z-30 flex flex-col items-center justify-center w-full h-full"
       >
         {/* Large "LET'S TALK" text with animated gradient */}
-        <motion.h2 
+        <motion.h2
           variants={titleVariants}
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl font-bold text-center tracking-tight leading-none mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-4 animated-gradient-text"
-          whileHover={{ 
+          whileHover={{
             scale: 1.05,
             transition: { duration: 0.3 }
           }}
@@ -200,14 +202,14 @@ const LetsTalk = () => {
           LET'S TALK
         </motion.h2>
         {/* Buttons Container */}
-        <motion.div 
+        <motion.div
           variants={buttonVariants}
           className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 px-4"
         >
           {/* LinkedIn and Contact Me buttons with ripple, magnetic, and glow effect */}
-          <motion.a 
-            href="#" 
-            whileHover={{ 
+          <motion.a
+            href="#"
+            whileHover={{
               scale: 1.1,
               y: -3,
               backgroundColor: "#ffffff",
@@ -220,9 +222,9 @@ const LetsTalk = () => {
           >
             LINKEDIN
           </motion.a>
-          <motion.a 
-            href="#contact" 
-            whileHover={{ 
+          <motion.a
+            href="#contact"
+            whileHover={{
               scale: 1.1,
               y: -3,
               backgroundColor: "#ffffff",

@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaArrowDown, FaArrowRight } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -17,138 +16,122 @@ const About = () => {
     }
   };
 
-  const titleVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: -50,
-      scale: 0.8
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
   const textVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-      x: -20
-    },
-    visible: { 
-      opacity: 1, 
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
       y: 0,
-      x: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.16, 1, 0.3, 1]
       }
     }
   };
 
-  // SVG blob animation
-  const blobPath = `M421,307Q393,364,337,389Q281,414,224,410Q167,406,120,368Q73,330,70,265Q67,200,109,151Q151,102,217,81Q283,60,340,97Q397,134,424,197Q451,260,421,307Z`;
-
   return (
-    <section id="about" className="py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 text-gray-800 relative overflow-hidden dark:text-white">
-      {/* Animated SVG Blob */}
-      <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] z-0 opacity-20 pointer-events-none" viewBox="0 0 500 500">
-        <motion.path
-          d={blobPath}
-          fill="url(#aboutBlobGradient)"
-          animate={{
-            d: [blobPath,
-              'M430,320Q400,400,320,420Q240,440,170,400Q100,360,90,270Q80,180,150,120Q220,60,320,80Q420,100,440,200Q460,300,430,320Z',
-              blobPath
-            ]
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <defs>
-          <linearGradient id="aboutBlobGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#6366f1" />
-            <stop offset="100%" stopColor="#a21caf" />
-          </linearGradient>
-        </defs>
-      </svg>
-      {/* Floating glowing particles */}
-      {[...Array(8)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full bg-blue-400/30 blur-md pointer-events-none"
-          style={{
-            width: `${16 + Math.random() * 32}px`,
-            height: `${16 + Math.random() * 32}px`,
-            top: `${10 + Math.random() * 70}%`,
-            left: `${10 + Math.random() * 80}%`,
-            zIndex: 1
-          }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 6 + Math.random() * 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.5
-          }}
-        />
-      ))}
-      <motion.div 
+    <section id="about" className="py-24 relative overflow-hidden bg-black">
+      {/* Background Gradient */}
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 60%)',
+        }}
+      />
+
+      {/* Cinematic Divider Line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
+
+      <motion.div
         ref={ref}
         variants={containerVariants}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
-        className="container mx-auto px-4 flex items-center justify-center relative z-20"
+        className="container mx-auto px-4 relative z-10"
       >
-        {/* Content area with heading and quote */}
-        <div className="flex flex-col items-center justify-center max-w-4xl mx-auto text-center relative"> 
-          {/* About heading - visible on all devices */}
-          <motion.h2 
-            variants={titleVariants}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-6 lg:mb-8 dark:text-white animated-gradient-text relative"
+        {/* Section Header */}
+        <motion.div
+          variants={textVariants}
+          className="text-center mb-16"
+        >
+          <motion.span
+            className="text-blue-500 text-sm tracking-[0.3em] font-mono mb-4 block"
           >
-            ABOUT
-            <motion.div
-              initial={{ width: 0 }}
-              animate={isVisible ? { width: "100%" } : { width: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
-            />
+            01. ABOUT ME
+          </motion.span>
+          <motion.h2
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"
+          >
+            Who I{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+              Am
+            </span>
           </motion.h2>
-          {/* Animated signature underline for name */}
           <motion.div
             initial={{ width: 0 }}
-            animate={isVisible ? { width: 180 } : { width: 0 }}
-            transition={{ delay: 1.2, duration: 1.2, type: 'spring' }}
-            className="mx-auto mb-2 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
-            style={{ width: 180, maxWidth: '80%' }}
+            animate={isVisible ? { width: '100px' } : { width: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"
           />
-          {/* Quote with typewriter and shimmer effect */}
-          <motion.div 
+        </motion.div>
+
+        {/* Content Grid */}
+        <div className="max-w-4xl mx-auto">
+          <motion.div
             variants={textVariants}
-            className="max-w-2xl"
+            className="text-center"
           >
-            <motion.p 
-              className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl italic leading-relaxed dark:text-gray-300 typewriter shimmer"
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
+            {/* Quote Block */}
+            <motion.blockquote
+              className="text-2xl md:text-3xl text-gray-300 font-light leading-relaxed mb-12"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
             >
-              I'm Santhosh Kumar —  a final year student pursuing a B.Tech in Information Technology, passionate about exploring the realms of technology and design
-            </motion.p>
+              <span className="text-5xl text-blue-500 font-serif">"</span>
+              <br />
+              I'm <span className="text-white font-medium">Santhosh Kumar</span> — a{' '}
+              <span className="text-blue-400">Software Engineer Trainee</span> at{' '}
+              <span className="text-purple-400 font-medium">Cisco Systems</span>.
+              <br />
+              <br />
+              Focused on developing and delivering high-quality code that meets client
+              requirements and established quality standards. With a strong foundation in
+              <span className="text-blue-400"> Java, Python, and full-stack development</span>,
+              I have hands-on experience in code delivery, application maintenance,
+              SDLC practices, and cross-functional collaboration.
+              <br />
+              <span className="text-5xl text-purple-500 font-serif">"</span>
+            </motion.blockquote>
+
+            {/* Stats Row */}
+            <motion.div
+              variants={textVariants}
+              className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+            >
+              {[
+                { number: '100+', label: 'Test Cases Automated' },
+                { number: '70%', label: 'Testing Time Reduced' },
+                { number: '85%+', label: 'Code Coverage' },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-500 text-sm mt-2">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
+
+      {/* Bottom Divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
     </section>
   );
 };
 
-export default About; 
+export default About;

@@ -63,13 +63,13 @@ const Projects = () => {
   };
 
   const titleVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: -30,
       scale: 0.9
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
@@ -80,14 +80,14 @@ const Projects = () => {
   };
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50,
       scale: 0.8,
       rotateY: -15
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       rotateY: 0,
@@ -108,7 +108,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-8 sm:py-12 md:py-16 lg:py-20 text-gray-800 dark:text-white relative overflow-hidden">
+    <section id="projects" className="py-8 sm:py-12 md:py-16 lg:py-20 bg-black text-white relative overflow-hidden">
       {/* Morphing Background Shape */}
       <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] z-0 opacity-10 pointer-events-none" viewBox="0 0 500 500">
         <motion.path
@@ -153,7 +153,7 @@ const Projects = () => {
           }}
         />
       ))}
-      <motion.div 
+      <motion.div
         ref={containerRef}
         variants={containerVariants}
         initial="hidden"
@@ -161,7 +161,7 @@ const Projects = () => {
         className="container mx-auto px-4 relative z-10"
       >
         {/* Enhanced Section Title with Animated Gradient */}
-        <motion.h2 
+        <motion.h2
           variants={titleVariants}
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 dark:text-white animated-gradient-text"
         >

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { HiArrowDown } from 'react-icons/hi';
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-radial from-blue-600/20 via-transparent to-transparent opacity-50" />
-      
+
       <div className="max-w-7xl mx-auto px-4 py-12 sm:py-16 md:py-20 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center min-h-[calc(100vh-8rem)] sm:min-h-[calc(100vh-10rem)]">
           {/* Text Content */}
@@ -29,7 +29,7 @@ const Home = () => {
               </span>
             </motion.div>
 
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -38,7 +38,7 @@ const Home = () => {
               <span className="gradient-text">Santhosh Kumar</span>
             </motion.h1>
 
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -47,18 +47,18 @@ const Home = () => {
               I build things for the web.
             </motion.h2>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
               className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed"
             >
-              I'm a final year student pursuing a B.Tech in Information Technology, passionate about exploring 
-              the realms of technology and design. Currently, I'm focused on building accessible, 
+              I'm a final year student pursuing a B.Tech in Information Technology, passionate about exploring
+              the realms of technology and design. Currently, I'm focused on building accessible,
               human-centered products and learning new technologies.
             </motion.p>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -68,12 +68,12 @@ const Home = () => {
                 href="https://github.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card p-2 sm:p-3 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:shadow-lg"
+                className="glass-card p-2 sm:p-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:shadow-lg"
               >
                 <FaGithub size={20} className="sm:w-6 sm:h-6" />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/santhosh-kumar-s-67465a239/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-card p-2 sm:p-3 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:shadow-lg"
@@ -84,9 +84,17 @@ const Home = () => {
                 href="https://twitter.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card p-2 sm:p-3 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:shadow-lg"
+                className="glass-card p-2 sm:p-3 text-gray-600 dark:text-gray-400 hover:text-blue-400 dark:hover:text-blue-400 transition-all duration-300 hover:shadow-lg"
               >
                 <FaTwitter size={20} className="sm:w-6 sm:h-6" />
+              </a>
+              <a
+                href="https://www.youtube.com/@errorhumanity"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-card p-2 sm:p-3 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-500 transition-all duration-300 hover:shadow-lg"
+              >
+                <FaYoutube size={20} className="sm:w-6 sm:h-6" />
               </a>
             </motion.div>
 
@@ -123,7 +131,7 @@ const Home = () => {
               </div>
               <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 border-4 border-blue-600/30 rounded-full bg-blue-100/50 dark:bg-blue-900/50 backdrop-blur-sm animate-pulse-slow" />
               <div className="absolute -top-4 sm:-top-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 border-4 border-purple-600/30 rounded-full bg-purple-100/50 dark:bg-purple-900/50 backdrop-blur-sm animate-pulse-slow" />
-              
+
               {/* Decorative Elements */}
               <div className="absolute top-1/2 -left-2 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 border-2 border-blue-600/30 rounded-full animate-pulse-slow" />
               <div className="absolute bottom-1/4 -right-2 sm:-right-4 w-4 h-4 sm:w-6 sm:h-6 border-2 border-purple-600/30 rounded-full animate-pulse-slow" />

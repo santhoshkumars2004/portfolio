@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Stats = () => {
   const stats = [
@@ -8,14 +9,22 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-6 sm:py-8 md:py-12 text-gray-800 dark:text-white">
+    <section className="py-16 bg-black text-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-center max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white/80 backdrop-blur-sm border border-gray-300/50 p-3 sm:p-4 md:p-6 rounded-lg dark:border-gray-800 dark:bg-black">
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 sm:mb-2 dark:text-white">{stat.value}</h3>
-              <p className="text-gray-600 text-xs sm:text-sm tracking-widest dark:text-gray-300">{stat.description}</p>
-            </div>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-gray-900/50 border border-gray-800 p-6 rounded-2xl text-center hover:border-blue-500/50 transition-all duration-300"
+            >
+              <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-2">
+                {stat.value}
+              </h3>
+              <p className="text-gray-400 text-sm tracking-widest">{stat.description}</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -23,4 +32,4 @@ const Stats = () => {
   );
 };
 
-export default Stats; 
+export default Stats;
