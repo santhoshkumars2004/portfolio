@@ -75,7 +75,7 @@ const Skills = () => {
         {/* Section Header */}
         <motion.div
           variants={itemVariants}
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-14 md:mb-20"
         >
           <span className="text-blue-500 text-sm tracking-[0.3em] font-mono mb-4 block">
             03. EXPERTISE
@@ -95,7 +95,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 max-w-6xl mx-auto">
           {skillCategories.map((category, index) => (
             <TiltCard key={index} className="h-full">
               <motion.div

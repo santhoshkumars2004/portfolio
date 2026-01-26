@@ -46,42 +46,58 @@ const certificates = [
   },
 ];
 
-const CARDS_PER_VIEW = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 4;
 const SLIDE_INTERVAL = 4000; // 4 seconds
+
+const getCardsPerView = () => {
+  if (typeof window === 'undefined') return 1;
+  if (window.innerWidth < 640) return 1;
+  if (window.innerWidth < 1024) return 2;
+  return 4;
+};
 
 const Certificates = () => {
   const [startIdx, setStartIdx] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(getCardsPerView());
   const total = certificates.length;
   const timerRef = useRef();
+
+  // Handle responsive cards per view
+  useEffect(() => {
+    const handleResize = () => {
+      setCardsPerView(getCardsPerView());
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Auto-slide logic
   useEffect(() => {
     timerRef.current = setInterval(() => {
-      setStartIdx((prev) => (prev + CARDS_PER_VIEW) % total);
+      setStartIdx((prev) => (prev + cardsPerView) % total);
     }, SLIDE_INTERVAL);
     return () => clearInterval(timerRef.current);
-  }, [total]);
+  }, [total, cardsPerView]);
 
   // Manual navigation resets timer
   const goTo = (idx) => {
     setStartIdx(idx);
     clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
-      setStartIdx((prev) => (prev + CARDS_PER_VIEW) % total);
+      setStartIdx((prev) => (prev + cardsPerView) % total);
     }, SLIDE_INTERVAL);
   };
 
-  const prevSlide = () => goTo((startIdx - CARDS_PER_VIEW + total) % total);
-  const nextSlide = () => goTo((startIdx + CARDS_PER_VIEW) % total);
+  const prevSlide = () => goTo((startIdx - cardsPerView + total) % total);
+  const nextSlide = () => goTo((startIdx + cardsPerView) % total);
 
   // Calculate visible certificates
   const visible = [];
-  for (let i = 0; i < CARDS_PER_VIEW; i++) {
+  for (let i = 0; i < cardsPerView; i++) {
     visible.push(certificates[(startIdx + i) % total]);
   }
 
   // Dots navigation (one per slide group)
-  const numDots = Math.ceil(total / CARDS_PER_VIEW);
+  const numDots = Math.ceil(total / cardsPerView);
 
   return (
     <section id="certificates" className="py-8 sm:py-12 md:py-16 min-h-[80vh] sm:min-h-screen bg-black text-white flex flex-col justify-center">
@@ -125,8 +141,8 @@ const Certificates = () => {
             {Array.from({ length: numDots }).map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => goTo(idx * CARDS_PER_VIEW)}
-                className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 border-2 border-blue-600 ${startIdx === idx * CARDS_PER_VIEW ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-700'}`}
+                onClick={() => goTo(idx * cardsPerView)}
+                className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 border-2 border-blue-600 ${startIdx === idx * cardsPerView ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-700'}`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}

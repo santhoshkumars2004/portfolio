@@ -105,7 +105,7 @@ const About = () => {
             {/* Stats Row */}
             <motion.div
               variants={textVariants}
-              className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto"
             >
               {[
                 { number: '100+', label: 'Test Cases Automated' },

@@ -74,13 +74,14 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
       style={{ WebkitBackdropFilter: 'blur(16px)', backdropFilter: 'blur(16px)' }}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between relative">
-        {/* Enhanced Logo/Branding with Animated Gradient */}
+        {/* Enhanced Logo/Branding with Animated Gradient - Responsive */}
         <motion.div
-          className="font-bold tracking-tight text-gray-900 text-xl dark:text-white animated-gradient-text"
+          className="font-bold tracking-tight text-gray-900 dark:text-white animated-gradient-text text-sm sm:text-base md:text-lg lg:text-xl truncate max-w-[120px] sm:max-w-[180px] md:max-w-none"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
-          SANTHOSH KUMAR S
+          <span className="hidden sm:inline">SANTHOSH KUMAR S</span>
+          <span className="sm:hidden">SK</span>
         </motion.div>
         {/* Enhanced Desktop Navigation Links */}
         <div className="hidden md:flex space-x-8 relative">
@@ -110,13 +111,13 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           ))}
         </div>
         {/* Enhanced Social Icons and Menu */}
-        <div className="flex items-center space-x-4">
-          {/* Enhanced Social Icons */}
+        <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
+          {/* Enhanced Social Icons - Hidden on small screens */}
           <motion.a
             href="https://linkedin.com/in/santhosh-kumar-s-67465a239/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 magnetic hover-glow"
+            className="hidden md:block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-300 magnetic hover-glow"
             whileHover={{ scale: 1.1, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -126,7 +127,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             href="https://wa.me/919344705641"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 magnetic hover-glow"
+            className="hidden md:block text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-all duration-300 magnetic hover-glow"
             whileHover={{ scale: 1.1, rotate: -5 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -134,7 +135,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           </motion.a>
           <motion.a
             href="mailto:santhoshkumar.btech1@gmail.com"
-            className="text-gray-600 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-all duration-300 magnetic hover-glow"
+            className="hidden md:block text-gray-600 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-all duration-300 magnetic hover-glow"
             whileHover={{ scale: 1.1, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -144,7 +145,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             href="https://www.youtube.com/@errorhumanity"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-red-500 dark:text-gray-300 dark:hover:text-red-500 transition-all duration-300 magnetic hover-glow"
+            className="hidden md:block text-gray-600 hover:text-red-500 dark:text-gray-300 dark:hover:text-red-500 transition-all duration-300 magnetic hover-glow"
             whileHover={{ scale: 1.1, rotate: -5 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -153,7 +154,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           {/* Enhanced Dark Mode Toggle */}
           <motion.button
             onClick={toggleDarkMode}
-            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 magnetic hover-glow"
+            className="p-1.5 sm:p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 magnetic hover-glow"
             whileHover={{ scale: 1.1, rotate: 180 }}
             whileTap={{ scale: 0.9 }}
           >
