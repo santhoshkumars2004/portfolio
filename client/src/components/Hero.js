@@ -46,11 +46,20 @@ const Hero = () => {
         />
       </div>
 
-      {/* Dark gradient overlay on left side for text readability */}
+      {/* Dark gradient overlay on left side for text readability - Enhanced for better separation */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: 'linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.2) 50%, transparent 70%)',
+          background: `
+            linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 65%, transparent 80%)
+          `,
+        }}
+      />
+      {/* Additional mobile overlay for better text readability */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none md:hidden"
+        style={{
+          background: 'rgba(0,0,0,0.7)',
         }}
       />
 

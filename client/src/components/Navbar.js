@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { FaLinkedin, FaWhatsapp, FaBars, FaTimes, FaYoutube } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
-import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
@@ -151,15 +150,6 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           >
             <FaYoutube className="text-xl" />
           </motion.a>
-          {/* Enhanced Dark Mode Toggle */}
-          <motion.button
-            onClick={toggleDarkMode}
-            className="p-1.5 sm:p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 magnetic hover-glow"
-            whileHover={{ scale: 1.1, rotate: 180 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            {isDarkMode ? <MdLightMode className="text-xl" /> : <MdDarkMode className="text-xl" />}
-          </motion.button>
           {/* Enhanced Mobile Menu Button */}
           <motion.button
             onClick={handleMenuToggle}
