@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+
+// Code-split the heavy Three.js bundle so it never blocks first paint.
+const HeroExperience3D = lazy(() => import('./3D/HeroExperience3D'));
 
 const Hero = () => {
   const roles = ['Software Engineer', 'AI Systems Engineer', 'Full Stack Developer'];
@@ -34,7 +38,15 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen pt-20 sm:pt-24 flex items-center relative overflow-hidden bg-[#0B1020]">
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_20%_25%,rgba(59,130,246,0.14),transparent_45%),radial-gradient(circle_at_85%_75%,rgba(168,85,247,0.12),transparent_45%)]" />
+      {/* Interactive WebGL backdrop (Three.js) */}
+      <Suspense fallback={null}>
+        <HeroExperience3D />
+      </Suspense>
+
+      {/* Legibility overlay: keeps the left-column copy crisp while the 3D shows through on the right */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_20%_25%,rgba(59,130,246,0.10),transparent_45%),radial-gradient(circle_at_85%_75%,rgba(34,211,238,0.08),transparent_45%)]" />
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_right,rgba(11,16,32,0.94),rgba(11,16,32,0.7)_42%,rgba(11,16,32,0.32)_68%,rgba(11,16,32,0.12))]" />
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(to_bottom,rgba(11,16,32,0.5),transparent_25%,transparent_75%,rgba(11,16,32,0.85))]" />
 
       <motion.div
         ref={ref}
@@ -117,6 +129,22 @@ const Hero = () => {
               variants={itemVariants}
               className="flex flex-wrap gap-4"
             >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  to="/experience"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold tracking-wide bg-gradient-to-r from-cyan-400 to-blue-600 text-[#04121b] shadow-[0_0_24px_rgba(34,211,238,0.5)] hover:shadow-[0_0_36px_rgba(34,211,238,0.8)] transition-shadow duration-300"
+                >
+                  ⚡ Enter the 3D City
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  to="/world"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold tracking-wide bg-gradient-to-r from-emerald-300 to-teal-500 text-[#0f2a25] shadow-[0_0_24px_rgba(45,212,191,0.5)] hover:shadow-[0_0_36px_rgba(45,212,191,0.8)] transition-shadow duration-300"
+                >
+                  🎮 Walk My Neighborhood
+                </Link>
+              </motion.div>
               <motion.a
                 href="#projects"
                 className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full font-medium tracking-wide"
