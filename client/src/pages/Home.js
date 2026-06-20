@@ -130,11 +130,11 @@ const Home = () => {
                 />
               </div>
               <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 border-4 border-blue-600/30 rounded-full bg-blue-100/50 dark:bg-blue-900/50 backdrop-blur-sm animate-pulse-slow" />
-              <div className="absolute -top-4 sm:-top-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 border-4 border-purple-600/30 rounded-full bg-purple-100/50 dark:bg-purple-900/50 backdrop-blur-sm animate-pulse-slow" />
+              <div className="absolute -top-4 sm:-top-6 -left-4 sm:-left-6 w-16 h-16 sm:w-24 sm:h-24 border-4 border-cyan-500/30 rounded-full bg-cyan-100/50 dark:bg-cyan-900/40 backdrop-blur-sm animate-pulse-slow" />
 
               {/* Decorative Elements */}
               <div className="absolute top-1/2 -left-2 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 border-2 border-blue-600/30 rounded-full animate-pulse-slow" />
-              <div className="absolute bottom-1/4 -right-2 sm:-right-4 w-4 h-4 sm:w-6 sm:h-6 border-2 border-purple-600/30 rounded-full animate-pulse-slow" />
+              <div className="absolute bottom-1/4 -right-2 sm:-right-4 w-4 h-4 sm:w-6 sm:h-6 border-2 border-cyan-500/30 rounded-full animate-pulse-slow" />
             </div>
           </motion.div>
         </div>

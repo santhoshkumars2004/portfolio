@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="w-full py-6 bg-white/70 dark:bg-black/70 glass-card shadow-lg flex items-center justify-center relative z-50" style={{ WebkitBackdropFilter: 'blur(12px)', backdropFilter: 'blur(12px)' }}>
+  <footer className="w-full py-6 bg-white/70 dark:bg-[#0B1020]/80 glass-card shadow-lg flex items-center justify-center relative z-50" style={{ WebkitBackdropFilter: 'blur(12px)', backdropFilter: 'blur(12px)' }}>
     <span className="animated-gradient-text font-bold text-lg tracking-wide drop-shadow-lg">
       © {new Date().getFullYear()} Santhosh Kumar S. All Rights Reserved.
     </span>

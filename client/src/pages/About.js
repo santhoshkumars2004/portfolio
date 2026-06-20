@@ -37,7 +37,7 @@ const About = () => {
               <FaGraduationCap className="mr-2 text-blue-600 dark:text-blue-400" />
               Education
             </h2>
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-gray-200/50 dark:bg-black dark:border-gray-800">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-gray-200/50 dark:bg-[#121A2B] dark:border-[#22314f]">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Bachelor of Technology</h3>
               <p className="text-blue-600 dark:text-blue-400">Information Technology</p>
               <p className="text-gray-600 dark:text-gray-300">2020 - 2024</p>
@@ -55,7 +55,7 @@ const About = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {skills.map((skill, index) => (
-                <div key={index} className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-gray-200/50 dark:bg-black dark:border-gray-800">
+                <div key={index} className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-gray-200/50 dark:bg-[#121A2B] dark:border-[#22314f]">
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-900 dark:text-white">{skill.name}</span>
                     <span className="text-blue-600 dark:text-blue-400">{skill.level}</span>
@@ -77,7 +77,7 @@ const About = () => {
               <FaLaptopCode className="mr-2 text-blue-600 dark:text-blue-400" />
               Experience
             </h2>
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-gray-200/50 dark:bg-black dark:border-gray-800">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-gray-200/50 dark:bg-[#121A2B] dark:border-[#22314f]">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Web Development Intern</h3>
               <p className="text-blue-600 dark:text-blue-400">Company Name</p>
               <p className="text-gray-600 dark:text-gray-300">Duration: [Your Internship Period]</p>

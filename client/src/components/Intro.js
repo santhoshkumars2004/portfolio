@@ -66,7 +66,7 @@ const Intro = ({ onComplete }) => {
         <AnimatePresence>
             {stage < 4 && (
                 <motion.div
-                    className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center overflow-hidden"
+                    className="fixed inset-0 z-[100] bg-[#0B1020] flex flex-col items-center justify-center overflow-hidden"
                     exit={{ opacity: 0, scale: 1.1 }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 >
@@ -139,7 +139,7 @@ const Intro = ({ onComplete }) => {
                                 className="text-center perspective-1000"
                             >
                                 <div className="overflow-hidden">
-                                    <h1 className="text-5xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 tracking-wider">
+                                    <h1 className="text-5xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 tracking-wider">
                                         {name.split('').map((letter, i) => (
                                             <motion.span
                                                 key={i}
@@ -190,9 +190,9 @@ const Intro = ({ onComplete }) => {
                                 </motion.p>
 
                                 {/* Progress Bar */}
-                                <div className="w-64 md:w-96 h-[2px] bg-gray-800 rounded-full overflow-hidden mx-auto">
+                                <div className="w-64 md:w-96 h-[2px] bg-[#1B2842] rounded-full overflow-hidden mx-auto">
                                     <motion.div
-                                        className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
+                                        className="h-full bg-gradient-to-r from-blue-500 to-cyan-400"
                                         style={{ width: `${progress}%` }}
                                         transition={{ duration: 0.1 }}
                                     />

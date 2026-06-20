@@ -5,242 +5,96 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 const LetsTalk = () => {
   const [ref, isVisible] = useScrollAnimation(0.3);
 
-  // Adjusted positions for scattered links based on visual estimation from the image
-  const scatteredLinks = [
-    { name: "REACT", top: '8%', left: '15%' },
-    { name: "NODE", top: '12%', right: '18%' },
-    { name: "WORDPRESS", top: '18%', right: '5%' },
-    { name: "FRAMER", bottom: '25%', left: '10%' },
-    // Add more links and adjust positions as needed
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 1,
-        staggerChildren: 0.3
-      }
-    }
+        duration: 0.9,
+        staggerChildren: 0.2,
+      },
+    },
   };
 
-  const titleVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-      scale: 0.8,
-      rotateX: -15
-    },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      rotateX: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const floatingVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: [0, 1, 0.8],
-      y: [20, -10, 0],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut"
-      }
-    }
-  };
-
-  const buttonVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.8
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: 'easeOut',
+      },
+    },
   };
-
-  const linkVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  // Animated chat bubbles
-  const chatBubbles = [
-    { text: "👋", top: '10%', left: '60%', delay: 0 },
-    { text: "💬", top: '30%', left: '80%', delay: 0.5 },
-    { text: "🚀", top: '60%', left: '10%', delay: 1 },
-    { text: "✨", top: '80%', left: '70%', delay: 1.5 },
-  ];
 
   return (
-    <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-black text-white min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Animated SVG Wave at the top */}
-      <svg className="absolute top-0 left-0 w-full h-24 z-10" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <motion.path
-          d="M0,80 Q360,0 720,80 T1440,80 V120 H0 Z"
-          fill="url(#letsTalkWave)"
-          animate={{
-            d: [
-              'M0,80 Q360,0 720,80 T1440,80 V120 H0 Z',
-              'M0,60 Q360,100 720,60 T1440,100 V120 H0 Z',
-              'M0,80 Q360,0 720,80 T1440,80 V120 H0 Z'
-            ]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <defs>
-          <linearGradient id="letsTalkWave" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#6366f1" />
-            <stop offset="100%" stopColor="#a21caf" />
-          </linearGradient>
-        </defs>
-      </svg>
-      {/* Floating decorative elements */}
-      <motion.div
-        variants={floatingVariants}
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        className="absolute top-10 left-10 w-4 h-4 bg-white/20 rounded-full hidden lg:block z-10"
-      />
-      <motion.div
-        variants={floatingVariants}
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        transition={{ delay: 0.5 }}
-        className="absolute top-20 right-20 w-6 h-6 bg-white/20 rounded-full hidden lg:block z-10"
-      />
-      <motion.div
-        variants={floatingVariants}
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        transition={{ delay: 1 }}
-        className="absolute bottom-20 left-20 w-3 h-3 bg-white/20 rounded-full hidden lg:block z-10"
-      />
-      {/* Parallax/Floating Chat Bubbles */}
-      {chatBubbles.map((bubble, i) => (
-        <motion.div
-          key={i}
-          className="absolute text-3xl select-none pointer-events-none z-20"
-          style={{ top: bubble.top, left: bubble.left }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.7, 1, 0.7],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 6 + i,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: bubble.delay
-          }}
-        >
-          {bubble.text}
-        </motion.div>
-      ))}
-      {/* Scattered Smaller Links (Absolute Positioning) */}
-      {/* Hidden on smaller screens to prevent overlap */}
-      <div className="absolute inset-0 pointer-events-none hidden lg:block z-20">
-        {scatteredLinks.map((link, index) => (
-          <motion.a
-            key={index}
-            href="#" // Replace with actual links
-            variants={linkVariants}
-            initial="hidden"
-            animate={isVisible ? "visible" : "hidden"}
-            whileHover={{
-              scale: 1.2,
-              color: "#ffffff",
-              transition: { duration: 0.2 }
-            }}
-            className="absolute text-gray-400 hover:text-white transition-colors text-sm font-semibold pointer-events-auto uppercase"
-            style={{ top: link.top, left: link.left, right: link.right, bottom: link.bottom }}
-          >
-            {link.name}
-          </motion.a>
-        ))}
-      </div>
-      {/* Main Content Container */}
+    <section className="relative py-16 md:py-20 bg-[#0B1020] text-white overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.16),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(34,211,238,0.14),transparent_40%)]" />
+
       <motion.div
         ref={ref}
         variants={containerVariants}
         initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        className="relative z-30 flex flex-col items-center justify-center w-full h-full"
+        animate={isVisible ? 'visible' : 'hidden'}
+        className="container mx-auto px-4 relative z-10"
       >
-        {/* Large "LET'S TALK" text with animated gradient */}
-        <motion.h2
-          variants={titleVariants}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl font-bold text-center tracking-tight leading-none mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-4 animated-gradient-text"
-          whileHover={{
-            scale: 1.05,
-            transition: { duration: 0.3 }
-          }}
-        >
-          LET'S TALK
-        </motion.h2>
-        {/* Buttons Container */}
-        <motion.div
-          variants={buttonVariants}
-          className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 px-4"
-        >
-          {/* LinkedIn and Contact Me buttons with ripple, magnetic, and glow effect */}
-          <motion.a
-            href="#"
-            whileHover={{
-              scale: 1.1,
-              y: -3,
-              backgroundColor: "#ffffff",
-              color: "#1f2937",
-              boxShadow: "0 0 30px #a21caf88",
-              transition: { duration: 0.2 }
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full border border-white text-white font-semibold transition-all duration-300 text-sm sm:text-base uppercase cursor-pointer hover:shadow-lg ripple magnetic hover-glow"
-          >
-            LINKEDIN
-          </motion.a>
-          <motion.a
-            href="#contact"
-            whileHover={{
-              scale: 1.1,
-              y: -3,
-              backgroundColor: "#ffffff",
-              color: "#1f2937",
-              boxShadow: "0 0 30px #6366f188",
-              transition: { duration: 0.2 }
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full border border-white text-white font-semibold transition-all duration-300 text-sm sm:text-base uppercase cursor-pointer hover:shadow-lg ripple magnetic hover-glow"
-          >
-            CONTACT ME
-          </motion.a>
-        </motion.div>
+        <div className="max-w-6xl mx-auto rounded-3xl border border-[#24406f] bg-[#121A2B]/90 p-6 md:p-10 shadow-[0_20px_80px_rgba(13,24,42,0.55)]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <motion.div variants={itemVariants} className="lg:col-span-7">
+              <p className="text-xs uppercase tracking-[0.25em] text-cyan-300 mb-4">Open For Roles</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                Let Us Build The Next
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300"> High-Impact Product</span>
+              </h2>
+              <p className="text-gray-300 mt-5 max-w-2xl leading-relaxed">
+                I am open to AI and software engineering opportunities where strong execution, fast learning, and practical outcomes matter.
+              </p>
+
+              <div className="flex flex-wrap gap-3 mt-6">
+                <span className="text-xs px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-200">AI Engineer</span>
+                <span className="text-xs px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-200">Software Engineer</span>
+                <span className="text-xs px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-200">Full Stack Engineer</span>
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="lg:col-span-5">
+              <div className="rounded-2xl border border-[#2a4f89] bg-[#0F1A30] p-5 md:p-6">
+                <p className="text-sm text-gray-300 mb-5">Quick Actions</p>
+                <div className="space-y-3">
+                  <a
+                    href="https://linkedin.com/in/santhosh-kumar-s-67465a239/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center px-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:opacity-95 transition-opacity"
+                  >
+                    Connect On LinkedIn
+                  </a>
+                  <a
+                    href="#contact"
+                    className="block w-full text-center px-5 py-3 rounded-xl border border-blue-500/40 text-blue-200 hover:bg-blue-500/10 transition-colors"
+                  >
+                    Send A Message
+                  </a>
+                </div>
+
+                <div className="mt-6 pt-5 border-t border-[#2a3f61] grid grid-cols-2 gap-3 text-center">
+                  <div className="rounded-lg bg-[#121F38] px-3 py-2">
+                    <p className="text-[11px] uppercase tracking-wider text-gray-400">Based In</p>
+                    <p className="text-sm text-gray-100 mt-1">Madurai, India</p>
+                  </div>
+                  <div className="rounded-lg bg-[#121F38] px-3 py-2">
+                    <p className="text-[11px] uppercase tracking-wider text-gray-400">Availability</p>
+                    <p className="text-sm text-gray-100 mt-1">Open To Interview</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </motion.div>
     </section>
   );
 };
 
-export default LetsTalk; 
+export default LetsTalk;

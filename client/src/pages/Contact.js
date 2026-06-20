@@ -104,7 +104,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 bg-white/80 dark:bg-black text-gray-900 dark:text-white border border-gray-300/50 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400"
+                    className="w-full px-4 py-2 bg-white/80 dark:bg-[#121A2B] text-gray-900 dark:text-white border border-gray-300/50 dark:border-[#22314f] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400"
                   />
                 </div>
 
@@ -119,7 +119,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 bg-white/80 dark:bg-black text-gray-900 dark:text-white border border-gray-300/50 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400"
+                    className="w-full px-4 py-2 bg-white/80 dark:bg-[#121A2B] text-gray-900 dark:text-white border border-gray-300/50 dark:border-[#22314f] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400"
                   />
                 </div>
 
@@ -134,7 +134,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full px-4 py-2 bg-white/80 dark:bg-black text-gray-900 dark:text-white border border-gray-300/50 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400"
+                    className="w-full px-4 py-2 bg-white/80 dark:bg-[#121A2B] text-gray-900 dark:text-white border border-gray-300/50 dark:border-[#22314f] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400"
                   ></textarea>
                 </div>
 

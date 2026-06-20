@@ -6,7 +6,9 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen font-sans text-gray-800 dark:bg-black dark:text-white;
+    @apply min-h-screen font-sans;
+    background-color: #0B1020;
+    color: #E6EDF7;
     background-attachment: fixed;
   }
 
@@ -35,7 +37,7 @@
   }
 
   .card {
-    @apply bg-white/80 backdrop-blur-sm dark:bg-black p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-gray-800;
+    @apply bg-white/80 backdrop-blur-sm dark:bg-slate-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-slate-700;
   }
 
   .btn {
@@ -60,11 +62,11 @@
   }
 
   .glass-card {
-    @apply bg-white/20 dark:bg-black/10 backdrop-blur-md border border-white/30 dark:border-gray-700 rounded-xl shadow-lg;
+    @apply bg-white/20 dark:bg-slate-900/40 backdrop-blur-md border border-white/30 dark:border-slate-700 rounded-xl shadow-lg;
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400;
   }
 
   /* Sidebar custom styles */
@@ -125,12 +127,12 @@ html {
 
 /* Glass Effect */
 .glass {
-  @apply bg-white/20 dark:bg-black/5 backdrop-blur-md border border-white/30 dark:border-gray-700;
+  @apply bg-white/20 dark:bg-slate-900/30 backdrop-blur-md border border-white/30 dark:border-slate-700;
 }
 
 /* Gradient Background */
 .gradient-bg {
-  @apply bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-black dark:to-black;
+  @apply bg-gradient-to-br from-blue-50 via-white to-cyan-50 dark:from-slate-950 dark:to-slate-900;
 }
 
 /* Glow Effect */
@@ -227,7 +229,7 @@ html {
 
 .morphing-bg {
   animation: morphing-bg 8s ease-in-out infinite;
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, #3b82f6 0%, #22d3ee 100%);
 }
 
 /* Neon Glow Effect */
@@ -350,7 +352,7 @@ html {
 }
 
 .animated-gradient-text {
-  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background: linear-gradient(-45deg, #3b82f6, #22d3ee, #60a5fa, #0ea5e9);
   background-size: 400% 400%;
   animation: gradient-shift 3s ease infinite;
   -webkit-background-clip: text;
@@ -639,7 +641,7 @@ html {
 }
 
 .animated-gradient {
-  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background: linear-gradient(-45deg, #3b82f6, #22d3ee, #60a5fa, #0ea5e9);
   background-size: 400% 400%;
   animation: gradient-shift 3s ease infinite;
 }
@@ -718,7 +720,7 @@ html {
 
 /* Dark Mode Enhancements */
 .dark .morphing-bg {
-  background: linear-gradient(45deg, #1e3a8a 0%, #7c3aed 100%);
+  background: linear-gradient(45deg, #1d4ed8 0%, #22d3ee 100%);
 }
 
 .dark .neon-glow {

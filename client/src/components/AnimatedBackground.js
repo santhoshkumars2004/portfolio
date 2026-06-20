@@ -69,7 +69,7 @@ const FloatingLines = () => {
         className="absolute top-1/2 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2"
         style={{ rotate: rotateReverse, scale: scaleReverse }}
       >
-        <div className="w-full h-full rounded-full border border-purple-500/10" />
+        <div className="w-full h-full rounded-full border border-cyan-400/10" />
       </motion.div>
 
       {/* Static horizontal lines with opacity animation */}

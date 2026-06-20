@@ -3,28 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 
 const certificates = [
   {
-    id: 'java',
-    title: 'Java Crash Course',
-    subtitle: 'Issued by Udemy',
-    image: '/images/java1.jpg',
-  },
-  {
     id: 'sql',
-    title: 'SQL With Relational Database',
+    title: 'SQL with Relational Database',
     subtitle: 'Issued by IBM',
     image: '/images/sql.jpg',
-  },
-  {
-    id: 'htmlcssjs',
-    title: 'Html, Css, Javascript',
-    subtitle: 'Issued by Great Learning',
-    image: '/images/certificate3.jpg',
-  },
-  {
-    id: 'ai',
-    title: 'Learn AI Skill Challenge',
-    subtitle: 'Issued by Microsoft',
-    image: '/images/ai1.jpg',
   },
   {
     id: 'aws',
@@ -33,10 +15,16 @@ const certificates = [
     image: '/images/amazon.jpg',
   },
   {
-    id: 'design',
-    title: 'Enterprise Design Thinking Practitioner',
-    subtitle: 'Issued by IBM',
-    image: '/images/design.jpg',
+    id: 'claude-code',
+    title: 'Claude Code in Action',
+    subtitle: 'Issued by Anthropic',
+    image: '/images/ai1.jpg',
+  },
+  {
+    id: 'hackathon-finalist',
+    title: 'Rajasthan Police Hackathon 2024',
+    subtitle: 'Finalist Recognition',
+    image: '/images/project1.jpg',
   },
 ];
 
@@ -50,11 +38,11 @@ const CertificateDetail = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-20 px-4">
-      <div className="bg-white/80 backdrop-blur-sm dark:bg-black rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-800 p-8 flex flex-col items-center max-w-xl w-full">
-        <img src={cert.image} alt={cert.title} className="w-full h-[500px] object-contain rounded-2xl mb-8 border-b border-gray-100 dark:border-gray-700" />
+      <div className="bg-white/80 backdrop-blur-sm dark:bg-[#121A2B] rounded-3xl shadow-2xl border border-gray-200/50 dark:border-[#22314f] p-8 flex flex-col items-center max-w-xl w-full">
+        <img src={cert.image} alt={cert.title} className="w-full h-[500px] object-contain rounded-2xl mb-8 border-b border-gray-100 dark:border-[#22314f]" />
         <h1 className="text-3xl font-bold mb-2 text-center text-gray-900 dark:text-white">{cert.title}</h1>
         <h2 className="text-lg text-gray-500 dark:text-gray-400 mb-6 text-center">{cert.subtitle}</h2>
-        <Link to="/" className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg">Back to Home</Link>
+        <Link to="/" className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-500 transition-colors shadow-lg">Back to Home</Link>
       </div>
     </div>
   );

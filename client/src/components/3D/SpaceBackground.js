@@ -17,7 +17,7 @@ const Stars = (props) => {
             <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
                 <PointMaterial
                     transparent
-                    color="#f272c8"
+                    color="#22d3ee"
                     size={0.002}
                     sizeAttenuation={true}
                     depthWrite={false}
@@ -29,7 +29,7 @@ const Stars = (props) => {
 
 const SpaceBackground = () => {
     return (
-        <div className="fixed inset-0 z-[-1] bg-black">
+        <div className="fixed inset-0 z-[-1] bg-[#0B1020]">
             <Canvas camera={{ position: [0, 0, 1] }}>
                 <Stars />
             </Canvas>

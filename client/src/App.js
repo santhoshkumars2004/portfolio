@@ -46,7 +46,7 @@ function App() {
       {showIntro ? (
         <Intro onComplete={() => setShowIntro(false)} />
       ) : (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-[#0B1020] text-[#E6EDF7]">
           {/* Custom Cursor - hidden on touch devices */}
           <div className="hidden md:block">
             <CursorFollower />
@@ -67,25 +67,15 @@ function App() {
                 <Route path="/" element={
                   <main>
                     <Hero />
-                    <div id="about">
-                      <About />
-                    </div>
-                    <Education />
-                    <div id="projects">
-                      <Projects />
-                    </div>
-                    <Stats />
+                    <About />
                     <Experience />
-                    <div id="skills">
-                      <Skills />
-                    </div>
-                    <div id="services">
-                      <Services />
-                    </div>
+                    <Skills />
+                    <Projects />
+                    <Education />
+                    <Stats />
+                    <Services />
                     <LetsTalk />
-                    <div id="contact">
-                      <Contact />
-                    </div>
+                    <Contact />
                   </main>
                 } />
                 <Route path="/projects/:projectId" element={<ProjectDetail />} />

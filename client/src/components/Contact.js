@@ -52,9 +52,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-8 sm:py-12 md:py-16 lg:py-20 bg-black text-white">
+    <section id="contact" className="py-8 sm:py-12 md:py-16 lg:py-20 bg-[#0B1020] text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 dark:text-white">Get In Touch</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 md:mb-12 dark:text-white">Let Us Build Something Valuable</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
@@ -85,13 +85,13 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2 text-gray-900 dark:text-white">Location</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Madurai, Tamilnadu, India</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Madurai, Tamil Nadu, India</p>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="p-3 sm:p-4 md:p-6 lg:p-8 border border-gray-300/50 rounded-lg dark:border-gray-700 dark:bg-black order-1 lg:order-2 bg-white/80 backdrop-blur-sm">
+          <div className="p-3 sm:p-4 md:p-6 lg:p-8 border border-gray-300/50 rounded-lg dark:border-[#22314f] dark:bg-[#121A2B] order-1 lg:order-2 bg-white/80 backdrop-blur-sm">
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-6">
               <div>
                 <label htmlFor="name" className="block text-gray-700 font-medium mb-1 sm:mb-2 dark:text-gray-300 text-sm sm:text-base">
@@ -103,7 +103,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500 dark:bg-black dark:border-gray-600 dark:text-white dark:focus:border-gray-500 text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500 dark:bg-[#0E1628] dark:border-[#2A3A58] dark:text-white dark:focus:border-blue-500 text-sm sm:text-base"
                   required
                 />
               </div>
@@ -118,7 +118,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500 dark:bg-black dark:border-gray-600 dark:text-white dark:focus:border-gray-500 text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500 dark:bg-[#0E1628] dark:border-[#2A3A58] dark:text-white dark:focus:border-blue-500 text-sm sm:text-base"
                   required
                 />
               </div>
@@ -133,7 +133,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows="4"
-                  className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500 dark:bg-black dark:border-gray-600 dark:text-white dark:focus:border-gray-500 text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500 dark:bg-[#0E1628] dark:border-[#2A3A58] dark:text-white dark:focus:border-blue-500 text-sm sm:text-base"
                   required
                 ></textarea>
               </div>
@@ -141,7 +141,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gray-800 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg hover:bg-gray-700 transition-colors dark:bg-gray-700 dark:hover:bg-gray-600 text-sm sm:text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-blue-600 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg hover:bg-blue-500 transition-colors dark:bg-blue-600 dark:hover:bg-blue-500 text-sm sm:text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
@@ -149,13 +149,13 @@ const Contact = () => {
               {/* Status Messages */}
               {submitStatus === 'success' && (
                 <div className="text-green-600 dark:text-green-400 text-sm text-center">
-                  Message sent successfully! You'll receive a response soon.
+                  Message sent successfully. I will get back to you soon.
                 </div>
               )}
 
               {submitStatus === 'error' && (
                 <div className="text-red-600 dark:text-red-400 text-sm text-center">
-                  Failed to send message. Please try again or contact directly via email.
+                  Could not send your message. Please try again or contact me directly by email.
                 </div>
               )}
             </form>

@@ -1,24 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { FaLinkedin, FaWhatsapp, FaBars, FaTimes, FaYoutube } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
-  const navLinksRef = useRef([]);
 
   const handleMenuToggle = () => setMenuOpen((open) => !open);
   const handleLinkClick = () => setMenuOpen(false);
-
-  const handleMouseMove = (e, idx) => {
-    const link = navLinksRef.current[idx];
-    if (link) {
-      const rect = link.getBoundingClientRect();
-      setUnderlineStyle({ left: rect.left, width: rect.width });
-    }
-  };
-  const handleMouseLeave = () => setUnderlineStyle({ left: 0, width: 0 });
 
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
@@ -58,10 +47,13 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   };
 
   const navLinks = [
-    { href: "#", text: "HOME" },
+    { href: "#home", text: "HOME" },
     { href: "#about", text: "ABOUT ME" },
+    { href: "#experience", text: "EXPERIENCE" },
+    { href: "#skills", text: "SKILLS" },
     { href: "#projects", text: "PROJECTS" },
-    { href: "#certificates", text: "CERTIFICATES" }
+    { href: "#certificates", text: "CERTIFICATES" },
+    { href: "#contact", text: "CONTACT" }
   ];
 
   return (
@@ -69,7 +61,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
       variants={navVariants}
       initial="hidden"
       animate="visible"
-      className="fixed top-0 left-0 w-full bg-white/70 backdrop-blur-xl border-b border-gray-200/50 z-50 shadow-lg dark:bg-black/70 dark:border-gray-800 glass-card"
+      className="fixed top-0 left-0 w-full bg-white/70 backdrop-blur-xl border-b border-gray-200/50 z-50 shadow-lg dark:bg-[#0B1020]/90 dark:border-blue-500/20 glass-card"
       style={{ WebkitBackdropFilter: 'blur(16px)', backdropFilter: 'blur(16px)' }}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between relative">
@@ -83,29 +75,19 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           <span className="sm:hidden">SK</span>
         </motion.div>
         {/* Enhanced Desktop Navigation Links */}
-        <div className="hidden md:flex space-x-8 relative">
-          {/* Animated Underline */}
-          <motion.div
-            className="absolute bottom-0 h-1 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 rounded-full pointer-events-none"
-            animate={{ left: underlineStyle.left, width: underlineStyle.width }}
-            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            style={{ position: 'fixed', zIndex: 100, left: underlineStyle.left, width: underlineStyle.width }}
-          />
+        <div className="hidden md:flex gap-5 lg:gap-6 relative">
           {navLinks.map((link, index) => (
             <motion.a
               key={index}
               href={link.href}
-              ref={el => navLinksRef.current[index] = el}
-              className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium transition-all duration-300 relative group"
-              whileHover={{ y: -2, color: '#a21caf', textShadow: '0 0 16px #a21caf88' }}
+              className="text-xs lg:text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium transition-all duration-300 relative group"
+              whileHover={{ y: -2, color: '#22d3ee', textShadow: '0 0 16px #22d3ee66' }}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              onMouseMove={e => handleMouseMove(e, index)}
-              onMouseLeave={handleMouseLeave}
             >
               {link.text}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 transition-all duration-300 group-hover:w-full"></span>
             </motion.a>
           ))}
         </div>
@@ -153,7 +135,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           {/* Enhanced Mobile Menu Button */}
           <motion.button
             onClick={handleMenuToggle}
-            className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 magnetic hover-glow"
+            className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-[#121A2B] text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-[#18243b] transition-all duration-300 magnetic hover-glow"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -190,7 +172,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+            className="md:hidden fixed inset-0 bg-[#0B1020]/70 backdrop-blur-sm z-50"
             onClick={handleMenuToggle}
           >
             <motion.div
@@ -198,7 +180,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="absolute top-16 left-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-md shadow-xl flex flex-col items-center py-8 space-y-6"
+              className="absolute top-16 left-0 w-full bg-white/95 dark:bg-[#0B1020]/95 backdrop-blur-md shadow-xl flex flex-col items-center py-8 space-y-6"
               onClick={e => e.stopPropagation()}
             >
               {navLinks.map((link, index) => (
@@ -213,7 +195,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                   transition={{ delay: index * 0.1 }}
                 >
                   {link.text}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 transition-all duration-300 group-hover:w-full"></span>
                 </motion.a>
               ))}
               {/* Mobile Social Icons */}

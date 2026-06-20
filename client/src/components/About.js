@@ -11,125 +11,115 @@ const About = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        staggerChildren: 0.3
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
+        duration: 0.7,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
   };
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-black">
-      {/* Background Gradient */}
+    <section id="about" className="py-24 relative overflow-hidden bg-[#0B1020]">
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-40"
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 60%)',
+          background:
+            'radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.15) 0%, transparent 50%), radial-gradient(ellipse at 85% 80%, rgba(34,211,238,0.12) 0%, transparent 45%)',
         }}
       />
-
-      {/* Cinematic Divider Line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
 
       <motion.div
         ref={ref}
         variants={containerVariants}
         initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
+        animate={isVisible ? 'visible' : 'hidden'}
         className="container mx-auto px-4 relative z-10"
       >
-        {/* Section Header */}
-        <motion.div
-          variants={textVariants}
-          className="text-center mb-16"
-        >
-          <motion.span
-            className="text-blue-500 text-sm tracking-[0.3em] font-mono mb-4 block"
-          >
-            01. ABOUT ME
-          </motion.span>
-          <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"
-          >
-            Who I{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-              Am
-            </span>
-          </motion.h2>
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isVisible ? { width: '100px' } : { width: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"
-          />
+        <motion.div variants={itemVariants} className="text-center mb-14">
+          <span className="text-blue-500 text-sm tracking-[0.3em] font-mono mb-4 block">01. ABOUT ME</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            Engineer With A{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Delivery Mindset</span>
+          </h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-6 rounded-full" />
         </motion.div>
 
-        {/* Content Grid */}
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            variants={textVariants}
-            className="text-center"
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <motion.article
+            variants={itemVariants}
+            className="lg:col-span-7 rounded-2xl border border-[#22314f] bg-[#121A2B]/85 p-6 md:p-8"
           >
-            {/* Quote Block */}
-            <motion.blockquote
-              className="text-2xl md:text-3xl text-gray-300 font-light leading-relaxed mb-12"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-5xl text-blue-500 font-serif">"</span>
-              <br />
-              I'm <span className="text-white font-medium">Santhosh Kumar</span> — a{' '}
-              <span className="text-blue-400">Software Engineer Trainee</span> at{' '}
-              <span className="text-purple-400 font-medium">Cisco Systems</span>.
-              <br />
-              <br />
-              Focused on developing and delivering high-quality code that meets client
-              requirements and established quality standards. With a strong foundation in
-              <span className="text-blue-400"> Java, Python, and full-stack development</span>,
-              I have hands-on experience in code delivery, application maintenance,
-              SDLC practices, and cross-functional collaboration.
-              <br />
-              <span className="text-5xl text-purple-500 font-serif">"</span>
-            </motion.blockquote>
+            <p className="text-xs uppercase tracking-[0.25em] text-blue-300 mb-5">Current Narrative</p>
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+              Software Engineer in the Cisco Graduate Program focused on automation and AI-assisted engineering.
+              I build systems that reduce manual effort, improve confidence in releases, and create measurable outcomes.
+            </p>
 
-            {/* Stats Row */}
-            <motion.div
-              variants={textVariants}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl mx-auto"
-            >
-              {[
-                { number: '100+', label: 'Test Cases Automated' },
-                { number: '70%', label: 'Testing Time Reduced' },
-                { number: '85%+', label: 'Code Coverage' },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-500 text-sm mt-2">{stat.label}</div>
-                </motion.div>
+            <p className="text-gray-300 mt-5 leading-relaxed">
+              My work combines Python automation, LLM orchestration, and RAG workflows with practical delivery through
+              GPT, LangChain, GitHub Copilot, and MCP-integrated pipelines.
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {['Python Automation', 'LLM Orchestration', 'RAG Workflows', 'MCP Integrations'].map((tag) => (
+                <span key={tag} className="text-xs px-3 py-1 rounded-full border border-blue-500/30 text-blue-200 bg-blue-500/10">
+                  {tag}
+                </span>
               ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.div>
+            </div>
+          </motion.article>
 
-      {/* Bottom Divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent" />
+          <motion.aside
+            variants={itemVariants}
+            className="lg:col-span-5 rounded-2xl border border-[#22314f] bg-[#121A2B]/75 p-6 md:p-8"
+          >
+            <p className="text-xs uppercase tracking-[0.25em] text-cyan-300 mb-5">What I Bring</p>
+            <ul className="space-y-3">
+              {[
+                'Turn ambiguous problems into executable engineering plans.',
+                'Build production pipelines with reliability and speed in mind.',
+                'Collaborate across QA, platform, and product teams.',
+                'Focus on impact metrics, not just implementation output.',
+              ].map((point) => (
+                <li key={point} className="text-gray-300 text-sm leading-relaxed flex gap-3">
+                  <span className="text-cyan-300 mt-1">•</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-6 rounded-xl border border-[#29426c] bg-[#0F1A30] px-4 py-3">
+              <p className="text-xs uppercase tracking-[0.2em] text-blue-300">Target Roles</p>
+              <p className="text-sm text-gray-200 mt-2">AI Engineer, Software Engineer, Full Stack Engineer</p>
+            </div>
+          </motion.aside>
+        </div>
+
+        <motion.div variants={itemVariants} className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 mt-8">
+          {[
+            { number: '2 Years to < 2 Hours', label: 'Compliance Cycle Time' },
+            { number: '70%', label: 'Noise Removed Before LLM' },
+            { number: '3 MCP Servers', label: 'Integrated in Production' },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center rounded-2xl border border-[#22314f] bg-[#121A2B]/75 p-5">
+              <div className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                {stat.number}
+              </div>
+              <div className="text-gray-400 text-xs sm:text-sm mt-2">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
